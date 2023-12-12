@@ -5,11 +5,13 @@ const dotenv = require('dotenv');
 
 //Local files
 const userRoute = require('./routes/user.route')
+const authRoute = require('./routes/auth.route')
 
 
 // Config dotev
 dotenv.config();
-
+//use json
+app.use(express.json()) ;
 
 
 // Database Connection
@@ -28,6 +30,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // use route
 app.use('/api/user', userRoute)
+app.use('/api/auth', authRoute)
 
 
 

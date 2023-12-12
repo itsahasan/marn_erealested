@@ -5,7 +5,21 @@ const { test } = require('../controllers/user.controller')
 
 
 
+//test api
 router.get('/test', test)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
