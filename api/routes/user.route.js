@@ -1,19 +1,11 @@
 const router = require('express').Router();
+const { test } = require('../controllers/user.controller')
 
 
-// @route    POST api/users
-// @desc     Register user
-// @access   Public
 
-router.get('/test', async (req, res) => {
-  try {
-    res.json({
-      message: 'Hellow world',
-    })
-  } catch (err) {
-    console.log(err)
-  }
-})
+
+
+router.get('/test', test)
 
 
 
