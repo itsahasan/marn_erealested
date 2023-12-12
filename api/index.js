@@ -10,8 +10,7 @@ const authRoute = require('./routes/auth.route')
 
 // Config dotev
 dotenv.config();
-//use json
-app.use(express.json()) ;
+
 
 
 // Database Connection
@@ -23,6 +22,23 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => {
     console.log(err);
   });
+
+
+  // Middlewares
+  app.use(express.json())
+  // app.use(helmet())
+  // app.use(morgan("common"))
+ 
+  app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500
+    const message = err.message || 'Internal Server Error'
+    return res.status(statusCode).json({
+      success: false,
+      statusCode,
+      message,
+    })
+  })
+
 
 
 

@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const User = require('../models/user.model')
+const { errorHandler } = require('../utilis/error')
 
 
 
@@ -8,7 +9,7 @@ const User = require('../models/user.model')
 // @desc     Register user
 // @access   Public
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   const { username, email, password } = req.body
 
   //password hash
@@ -22,7 +23,7 @@ const signup = async (req, res) => {
     res.status(201).json('User created sucessfully')
     
   } catch (error) {
-    res.status(500).json(error.message)
+    next(error)
   }
 
 }

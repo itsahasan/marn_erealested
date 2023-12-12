@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       min: 2,
       max: 20,
+      unique: true,
     },
     email: {
       type: String,
@@ -20,8 +21,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 6,
       max: 64,
-    }
-    
+    },
   },
   { timestamps: true }
 )
